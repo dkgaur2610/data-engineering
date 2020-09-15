@@ -80,4 +80,12 @@ try:
 except psycopg2.Error as e:
     print(e)
 
-cur.c
+# We are done with creating a table and deleting records from it - lets drop it and close connections
+
+try:
+    print('Dropping the table...')
+    cur.execute("DROP TABLE music_library")
+    cur.close()
+    conn.close()
+except psycopg2.Error as e:
+    print(e)
